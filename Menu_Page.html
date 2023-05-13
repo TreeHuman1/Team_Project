@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CTU PIZZA - Menu</title>
+  <link rel="stylesheet" type="text/css" href="Menu_Page_styles.css">
+</head>
+<body>
+  <div class="header">
+    <h1>CTU PIZZA - Menu</h1>
+  </div>
+
+  <div class="navbar">
+    <a href="Main_Page.html">Home</a>
+    <a href="#">Menu</a>
+    <a href="checkout.html">Checkout</a>
+    <a href="login.html">Login</a>
+  </div>
+
+  <div class="menu">
+    <h2>Our Delicious Pizzas</h2>
+
+    <div class="pizza-items">
+      <div>
+        <img src="pizza1.jpg" alt="Pizza 1">
+        <p class="pizza-name">Pepperoni Pizza</p>
+        <p class="pizza-price">Price: $10.99</p>
+        <button onclick="addToCart('Pepperoni Pizza', 10.99)">Add to Cart</button>
+      </div>
+      <div>
+        <img src="pizza2.jpg" alt="Pizza 2">
+        <p class="pizza-name">Margherita Pizza</p>
+        <p class="pizza-price">Price: $9.99</p>
+        <button onclick="addToCart('Margherita Pizza', 9.99)">Add to Cart</button>
+      </div>
+      <div>
+        <img src="pizza3.jpg" alt="Pizza 3">
+        <p class="pizza-name">Meat Lovers Pizza</p>
+        <p class="pizza-price">Price: $11.99</p>
+        <button onclick="addToCart('Meat Lovers Pizza', 11.99)">Add to Cart</button>
+      </div>
+      <div>
+        <img src="pizza4.jpg" alt="Pizza 4">
+        <p class="pizza-name">Hawaiian Pizza</p>
+        <p class="pizza-price">Price: $12.99</p>
+        <button onclick="addToCart('Hawaiian Pizza', 12.99)">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="menu.js"></script>
+</body>
+</html>
+

@@ -1,18 +1,18 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
+    // Prevent the form from submitting normally
     event.preventDefault();
 
+    // Get the entered username and password
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-    var userType = document.getElementById('userType').value;
 
-    // This is a very basic check and should not be used for real authentication.
-    if(username === "admin" && password === "admin" && userType === "admin") {
-        alert("Admin login successful");
-        // Here you would redirect the user to the admin page
-    } else if(username === "customer" && password === "customer" && userType === "customer") {
-        alert("Customer login successful");
-        // Here you would redirect the user to the customer page
+    // Check the entered credentials. In a real-world application, you would need to
+    // securely check the credentials server-side, not client-side like this.
+    if (username === 'admin' && password === 'admin') {
+        // If the credentials match, redirect to the admin page
+        window.location.href = 'admin.html';
     } else {
-        alert("Invalid username or password");
+        // If the credentials don't match, show an error message
+        alert('Incorrect username or password');
     }
 });

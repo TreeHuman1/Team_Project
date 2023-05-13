@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CTU PIZZA - Admin</title>
+  <link rel="stylesheet" type="text/css" href="Main_styles.css">
+</head>
+<body>
+  <div class="header">
+    <h1>CTU PIZZA - Admin Page</h1>
+  </div>
+
+  <div class="navbar">
+    <a href="Main_Page.html">Home</a>
+    <a href="Menu_Page.html">Menu</a>
+    <a href="cart.html">Cart</a>
+    <a href="checkout.html">Checkout</a>
+    <a href="login.html">Logout</a>
+  </div>
+
+  <div class="intro">
+    <h2>Manage Discounts</h2>
+    <p>Update discounts for different pizzas.</p>
+
+    <form id="discountForm">
+      <label for="pizza">Pizza:</label><br>
+      <input type="text" id="pizza" name="pizza"><br>
+      <label for="discount">Discount:</label><br>
+      <input type="text" id="discount" name="discount"><br>
+      <input type="submit" value="Update">
+    </form>
+  </div>
+
+  <script src="jsAdmin.js"></script>
+</body>
+</html>

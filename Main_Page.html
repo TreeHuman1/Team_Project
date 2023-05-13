@@ -98,38 +98,51 @@
   </div>
 
   <div class="navbar">
-    <a href="#">Home</a>
-    <a href="#">Menu</a>
-    <a href="#">Cart</a>
-    <a href="#">Checkout</a>
+    <a href="Main_Page.html">Home</a>
+    <a href="Menu_Page.html">Menu</a>
+    <a href="checkout.html">Checkout</a>
     <a href="login.html">Login</a>
+
   </div>
 
-
+  <div>
+    <a href="menu.html"><img src="pizza1.jpg" alt="Pizza 1"></a>
+    <p class="pizza-name">Pepperoni Pizza</p>
+    <p class="pizza-discount"></p>
+  </div>
+  
+  <script>
+  // Get the discount from localStorage
+  var discount = localStorage.getItem('Pizza1D');
+  
+  // Display the discount
+  document.querySelector('.pizza-discount').textContent = 'Discount: ' + discount + '%';
+  </script>
 
 
   
-  <div class="intro">
-    <h2>Delicious Pizzas, Right at Your Doorstep!</h2>
-    <p>Welcome to CTU PIZZA, where we serve mouthwatering pizzas made with love and the finest ingredients. Our pizzas are baked to perfection, delivering a burst of flavors that will leave you craving for more. Explore our menu and indulge in a pizza experience like no other!</p>
-
-    <div class="pizza-images">
-      <div>
-        <a href="menu.html"><img src="pizza1.jpg" alt="Pizza 1"></a>
-        <p class="pizza-name">Pepperoni Pizza</p>
-      </div>
-      <div>
-        <a href="menu.html"><img src="pizza2.jpg" alt="Pizza 2"></a>
-        <p class="pizza-name">Margherita Pizza</p>
-      </div>
-      <div>
-        <a href="menu.html"><img src="pizza3.jpg" alt="Pizza 3"></a>
-        <p class="pizza-name">Meat Lovers Pizza</p>
-      </div>
-      <div>
-        <a href="menu.html"><img src="pizza4.jpg" alt="Pizza 4"></a>
-        <p class="pizza-name">Hawaiian Pizza</p>
-      </div>
-    </div>
+<div class="pizza-images">
+  <div>
+    <a href="menu.html"><img src="pizza1.jpg" alt="Pizza 1"></a>
+    <p class="pizza-name">Pepperoni Pizza</p>
+    <p class="pizza-price">Price: $10.99</p>
+  </div>
+  <div>
+    <a href="menu.html"><img src="pizza2.jpg" alt="Pizza 2"></a>
+    <p class="pizza-name">Margherita Pizza</p>
+    <p class="pizza-price">Price: $9.99</p>
+  </div>
+  <div>
+    <a href="menu.html"><img src="pizza3.jpg" alt="Pizza 3"></a>
+    <p class="pizza-name">Meat Lovers Pizza</p>
+    <p class="pizza-price">Price: $11.99</p>
+  </div>
+  <div>
+    <a href="menu.html"><img src="pizza4.jpg" alt="Pizza 4"></a>
+    <p class="pizza-name">Hawaiian Pizza</p>
+    <p class="pizza-price">Price: $12.99</p>
+  </div>
+</div>
+</div>
     </body>
     </html>     
