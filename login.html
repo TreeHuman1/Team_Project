@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="login_styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br>
+            <label for="userType">I'm a:</label><br>
+            <select id="userType" name="userType" required>
+                <option value="customer">Customer</option>
+                <option value="admin">Admin</option>
+            </select><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+<script src="login_script.js"></script>
+</html>
