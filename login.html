@@ -5,28 +5,40 @@
 </head>
 <body>
 
+    <!-- Navigation bar -->
     <div class="navbar">
         <a href="Main_Page.html">Home</a>
         <a href="Menu_Page.html">Menu</a>
         <a href="checkout.html">Checkout</a>
         <a href="login.html">Login</a>
-      </div>
+    </div>
 
+    <!-- Login container -->
     <div class="login-container">
         <h2>Login</h2>
         <form id="loginForm">
+
+            <!-- Username field -->
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" required><br>
+
+            <!-- Password field -->
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password" required><br>
+
+            <!-- User type field -->
             <label for="userType">I'm a:</label><br>
             <select id="userType" name="userType" required>
                 <option value="customer">Customer</option>
                 <option value="admin">Admin</option>
             </select><br>
+
+            <!-- Submit button -->
             <input type="submit" value="Login">
         </form>
     </div>
 </body>
+
+<!-- JavaScript file -->
 <script src="login_script.js"></script>
 </html>

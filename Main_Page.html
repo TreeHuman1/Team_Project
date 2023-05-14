@@ -5,104 +5,108 @@
   <head>
   <link rel="stylesheet" type="text/css" href="Main_styles.css">
 </head>
-
-</head>
+<!-- CSS styles -->
 <style>
   /* Header styles */
   .header {
-    background-color: crimson;
-    padding: 4vw;
-    border: 1vw solid gold;
-    text-align: center;
+    background-color: crimson; /* Background color of the header */
+    padding: 4vw; /* Padding around the content within the header */
+    border: 1vw solid gold; /* Border around the header */
+    text-align: center; /* Center the content within the header */
   }
 
   .header h1 {
-    margin: 0;
-    color: black;
-    font-size: 6vw;
-    line-height: 1;
+    margin: 0; /* Remove margin around the h1 element */
+    color: black; /* Text color of the h1 element */
+    font-size: 6vw; /* Font size of the h1 element relative to viewport width */
+    line-height: 1; /* Line height of the h1 element */
   }
 
   /* Navigation bar styles */
   .navbar {
-    background-color: #333;
-    overflow: hidden;
-    text-align: center; /* Center the navigation links */
+    background-color: #333; /* Background color of the navigation bar */
+    overflow: hidden; /* Handle overflowing content within the navigation bar */
+    text-align: center; /* Center-align the navigation links */
   }
 
   .navbar a {
     display: inline-block; /* Make the links appear in a line */
-    color: white;
-    text-align: left;
-    padding: 1vw;
-    text-decoration: none;
-    font-size: 1vw;
+    color: white; /* Text color of the navigation links */
+    text-align: left; /* Align the text to the left within the navigation links */
+    padding: 1vw; /* Padding around the navigation links */
+    text-decoration: none; /* Remove underline or decorations from the links */
+    font-size: 1vw; /* Font size of the navigation links relative to viewport width */
   }
 
   .navbar a:hover {
-    background-color: #111;
+    background-color: #111; /* Background color of the navigation link when hovered */
   }
 
   /* Introduction section styles */
   .intro {
-    text-align: center;
-    margin-top: 4vw;
+    text-align: center; /* Center-align the content within the introduction section */
+    margin-top: 4vw; /* Add top margin */
   }
 
   .intro h2 {
-    font-size: 4vw;
-    margin-bottom: 2vw;
+    font-size: 4vw; /* Font size of the h2 element relative to viewport width */
+    margin-bottom: 2vw; /* Add bottom margin */
   }
 
   .intro p {
-    font-size: 2vw;
+    font-size: 2vw; /* Font size of the p element relative to viewport width */
   }
 
   .intro .pizza-images {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 2vw;
+    display: flex; /* Use flexbox to create a flexible container */
+    justify-content: center; /* Center-align the content horizontally within the container */
+    flex-wrap: wrap; /* Wrap the content to the next line if it overflows */
+    margin-top: 2vw; /* Add top margin */
   }
 
   .intro .pizza-images div {
-    flex: 0 0 25%;
-    max-width: 25%;
-    margin: 1vw;
-    text-align: center;
+    flex: 0 0 25%; /* Specify flex properties for each div within the container */
+    max-width: 25%; /* Maximum width of each div */
+    margin: 1vw; /* Add margin around each div */
+    text-align: center; /* Center-align the content within each div */
   }
 
   .intro .pizza-images img {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Set the width of the pizza images to 100% */
+    height: auto; /* Maintain the aspect ratio of the images */
   }
 
   .intro .pizza-images .pizza-name {
-    font-size: 2vw;
-    margin-top: 1vw;
+    font-size: 2vw; /* Font size of the pizza name relative to viewport width */
+    margin-top: 1vw; /* Add top margin */
   }
 
-  /* Body styles */
+   /* Body styles */
   body {
-    background-image: url("background.jpeg");
-    background-size: cover;
-    margin: 0;
-    padding: 0;
+    background-image: url("background.jpeg"); /* Set background image for the body */
+    background-size: cover; /* Adjust background image size to cover the entire body */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
   }
-
-
 </style>
+
 <body>
   <div class="header">
     <h1>CTU PIZZA</h1>
   </div>
 
-  <div class="navbar">
-    <a href="Main_Page.html">Home</a>
-    <a href="Menu_Page.html">Menu</a>
-    <a href="checkout.html">Checkout</a>
-    <a href="login.html">Login</a>
+<!-- Navigation bar section -->
+<div class="navbar">
+  <a href="Main_Page.html">Home</a> <!-- Link to the Home page -->
+  <a href="Menu_Page.html">Menu</a> <!-- Link to the Menu page -->
+  <a href="checkout.html">Checkout</a> <!-- Link to the Checkout page -->
+  <a href="login.html">Login</a> <!-- Link to the Login page -->
+</div>
 
+  <div class="intro">
+    <h2>Welcome to CTU PIZZA</h2>
+    <p>Experience the taste of our mouth-watering pizzas made with the finest ingredients. Order now and satisfy your pizza cravings!</p><!-- Added restaurant description -->
+  </div>
   </div>
 
   <div>
@@ -118,31 +122,5 @@
   // Display the discount
   document.querySelector('.pizza-discount').textContent = 'Discount: ' + discount + '%';
   </script>
-
-
-  
-<div class="pizza-images">
-  <div>
-    <a href="menu.html"><img src="pizza1.jpg" alt="Pizza 1"></a>
-    <p class="pizza-name">Pepperoni Pizza</p>
-    <p class="pizza-price">Price: $10.99</p>
-  </div>
-  <div>
-    <a href="menu.html"><img src="pizza2.jpg" alt="Pizza 2"></a>
-    <p class="pizza-name">Margherita Pizza</p>
-    <p class="pizza-price">Price: $9.99</p>
-  </div>
-  <div>
-    <a href="menu.html"><img src="pizza3.jpg" alt="Pizza 3"></a>
-    <p class="pizza-name">Meat Lovers Pizza</p>
-    <p class="pizza-price">Price: $11.99</p>
-  </div>
-  <div>
-    <a href="menu.html"><img src="pizza4.jpg" alt="Pizza 4"></a>
-    <p class="pizza-name">Hawaiian Pizza</p>
-    <p class="pizza-price">Price: $12.99</p>
-  </div>
-</div>
-</div>
-    </body>
-    </html>     
+</body>
+</html>
