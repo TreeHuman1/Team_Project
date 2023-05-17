@@ -4,6 +4,7 @@
   <title>CTU PIZZA</title>
   <head>
   <link rel="stylesheet" type="text/css" href="Main_styles.css">
+  <script src="jsAdmin.js"></script>
 </head>
 <!-- CSS styles -->
 <style>
@@ -11,7 +12,7 @@
   .header {
     background-color: crimson; /* Background color of the header */
     padding: 4vw; /* Padding around the content within the header */
-    border: 1vw solid gold; /* Border around the header */
+    border: 2vw solid gold; /* Border around the header */
     text-align: center; /* Center the content within the header */
   }
 
@@ -109,18 +110,14 @@
   </div>
   </div>
 
-  <div>
-    <a href="menu.html"><img src="pizza1.jpg" alt="Pizza 1"></a>
-    <p class="pizza-name">Pepperoni Pizza</p>
-    <p class="pizza-discount"></p>
-  </div>
+  <div class="intro">
+    <h2>Special Discounts</h2>
+    <div id="pizzaDeals">
+      <!-- Pizza deals will be dynamically added here -->
+    </div>
   
-  <script>
-  // Get the discount from localStorage
-  var discount = localStorage.getItem('Pizza1D');
-  
-  // Display the discount
-  document.querySelector('.pizza-discount').textContent = 'Discount: ' + discount + '%';
-  </script>
+
+ <script src="jsAdmin.js"></script>
+
 </body>
 </html>

@@ -1,18 +1,26 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
-    // Prevent the form from submitting normally
     event.preventDefault();
-
-    // Get the entered username and password
+  
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-
-    // Check the entered credentials. In a real-world application, you would need to
-    // securely check the credentials server-side, not client-side like this.
-    if (username === 'admin' && password === 'admin') {
-        // If the credentials match, redirect to the admin page
-        window.location.href = 'admin.html';
-    } else {
-        // If the credentials don't match, show an error message
-        alert('Incorrect username or password');
-    }
-});
+  
+    // Send a POST request to the server-side script
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'sql_script.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.success) {
+          // If the credentials match, redirect to the admin page
+          window.location.href = 'admin.html';
+        } else {
+          // If the credentials don't match, show an error message
+          alert('Incorrect username or password');
+        }
+      }
+    };
+    var data = 'username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password);
+    xhr.send(data);
+  });
+  
