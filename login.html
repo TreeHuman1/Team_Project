@@ -14,29 +14,15 @@
     </div>
 
     <!-- Login container -->
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-
-            <!-- Username field -->
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" required><br>
-
-            <!-- Password field -->
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br>
-
-            <!-- User type field -->
-            <label for="userType">I'm a:</label><br>
-            <select id="userType" name="userType" required>
-                <option value="customer">Customer</option>
-                <option value="admin">Admin</option>
-            </select><br>
-
-            <!-- Submit button -->
-            <input type="submit" value="Login">
-        </form>
-    </div>
+    <form id="loginForm" action="sql_script.php" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+    
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+    
+        <input type="submit" value="Login">
+      </form>
 </body>
 
 <!-- JavaScript file -->
