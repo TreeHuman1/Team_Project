@@ -53,11 +53,44 @@
   <!-- Checkout content section -->
   <div class="checkout">
     <h2>Cart Items</h2>
-    <ul id="cart-items"></ul> <!-- Unordered list to display cart items -->
-    <p id="cart-total">Total: $0</p> <!-- Paragraph to display total amount -->
+    <ul id="cart-items"></ul> <!-- Unordered list to display cart items --> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <body>
+
+    <div data-ng-app="" data-ng-init="pepperoni_quantity=0; cheese_quantity=0; margherita_quantity=0; taco_quantity=0; meatlovers_quantity=0; hawaiian_quantity=0; pepperoni_price=10.99; cheese_price=9.99; margherita_price=9.99; taco_price=10.99; meatlovers_price=11.99; hawaiian_price=12.99">
+
+    <li>Pepperoni</li>
+    Quantity: <input type="number" ng-model="pepperoni_quantity">
+    Price: <input type="number" ng-model="pepperoni_price">
+
+    <li>Cheese</li>
+    Quantity: <input type="number" ng-model="cheese_quantity">
+    Price: <input type="number" ng-model="cheese_price">
+
+    <li>Margherita</li>
+    Quantity: <input type="number" ng-model="margherita_quantity">
+    Price: <input type="number" ng-model="margherita_price">
+
+    <li>Taco</li>
+    Quantity: <input type="number" ng-model="taco_quantity">
+    Price: <input type="number" ng-model="taco_price">
+
+    <li>Meat Lovers</li>
+    Quantity: <input type="number" ng-model="meatlovers_quantity">
+    Price: <input type="number" ng-model="meatlovers_price">
+
+    <li>Hawaiian</li>
+    Quantity: <input type="number" ng-model="hawaiian_quantity">
+    Price: <input type="number" ng-model="hawaiian_price">
+
+    <p><b>Total: $</b> {{(pepperoni_quantity * pepperoni_price) + (cheese_quantity * cheese_price) + (margherita_quantity * margherita_price) + (taco_quantity * taco_price) + (meatlovers_quantity * meatlovers_price) + (hawaiian_quantity * hawaiian_price)}}</p> <!-- Paragraph to display total amount -->
+    </div>
     <button id="pay-now-btn">Pay Now</button> <!-- Button to initiate payment -->
   </div>
 
   <script src="checkout.js"></script> <!-- External JavaScript file for functionality -->
+  
+
 </body>
 </html>
