@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CTU PIZZA</title>
+  <head>
+  <link rel="stylesheet" type="text/css" href="Thank_You.css">
+  <script src="jsAdmin.js"></script>
+</head>
+<!-- CSS styles -->
+<style>
+  /* Header styles */
+  .header {
+    background-color: crimson; /* Background color of the header */
+    padding: 4vw; /* Padding around the content within the header */
+    border: 2vw solid gold; /* Border around the header */
+    text-align: center; /* Center the content within the header */
+  }
+
+  .header h1 {
+    margin: 0; /* Remove margin around the h1 element */
+    color: black; /* Text color of the h1 element */
+    font-size: 6vw; /* Font size of the h1 element relative to viewport width */
+    line-height: 1; /* Line height of the h1 element */
+  }
+
+  /* Navigation bar styles */
+  .navbar {
+    background-color: #333; /* Background color of the navigation bar */
+    overflow: hidden; /* Handle overflowing content within the navigation bar */
+    text-align: center; /* Center-align the navigation links */
+  }
+
+  .navbar a {
+    display: inline-block; /* Make the links appear in a line */
+    color: white; /* Text color of the navigation links */
+    text-align: left; /* Align the text to the left within the navigation links */
+    padding: 1vw; /* Padding around the navigation links */
+    text-decoration: none; /* Remove underline or decorations from the links */
+    font-size: 1vw; /* Font size of the navigation links relative to viewport width */
+  }
+
+  .navbar a:hover {
+    background-color: #111; /* Background color of the navigation link when hovered */
+  }
+
+  /* Introduction section styles */
+  .intro {
+    text-align: center; /* Center-align the content within the introduction section */
+    margin-top: 4vw; /* Add top margin */
+  }
+
+  .intro h2 {
+    font-size: 4vw; /* Font size of the h2 element relative to viewport width */
+    margin-bottom: 2vw; /* Add bottom margin */
+  }
+
+  .intro p {
+    font-size: 2vw; /* Font size of the p element relative to viewport width */
+  }
+
+  .intro .pizza-images {
+    display: flex; /* Use flexbox to create a flexible container */
+    justify-content: center; /* Center-align the content horizontally within the container */
+    flex-wrap: wrap; /* Wrap the content to the next line if it overflows */
+    margin-top: 2vw; /* Add top margin */
+  }
+
+  .intro .pizza-images div {
+    flex: 0 0 25%; /* Specify flex properties for each div within the container */
+    max-width: 25%; /* Maximum width of each div */
+    margin: 1vw; /* Add margin around each div */
+    text-align: center; /* Center-align the content within each div */
+  }
+
+  .intro .pizza-images img {
+    width: 100%; /* Set the width of the pizza images to 100% */
+    height: auto; /* Maintain the aspect ratio of the images */
+  }
+
+  .intro .pizza-images .pizza-name {
+    font-size: 2vw; /* Font size of the pizza name relative to viewport width */
+    margin-top: 1vw; /* Add top margin */
+  }
+
+   /* Body styles */
+  body {
+    background-image: url("background.jpeg"); /* Set background image for the body */
+    background-size: cover; /* Adjust background image size to cover the entire body */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+</style>
+
+<body>
+  <div class="header">
+    <h1>CTU PIZZA</h1>
+  </div>
+
+<!-- Navigation bar section -->
+<div class="navbar">
+  <a href="Main_Page.html">Home</a> <!-- Link to the Home page -->
+  <a href="Menu_Page.html">Menu</a> <!-- Link to the Menu page -->
+  <a href="checkout.html">Checkout</a> <!-- Link to the Checkout page -->
+  <a href="login.html">Login</a> <!-- Link to the Login page -->
+</div>
+
+  <div class="intro">
+    <h2>THANK YOU! Your order will be ready soon!</h2>
+    <p>Please come again!</p><!-- Added restaurant description -->
+  </div>
+  </div>
+
+ <script src="jsAdmin.js"></script>
+
+</body>
+</html>

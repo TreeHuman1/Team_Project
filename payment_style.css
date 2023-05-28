@@ -79,7 +79,17 @@
 }
 
 .container form .submit-btn{
-  width: 100%;
+  width: 49.5%;
+  padding:12px;
+  font-size: 17px;
+  background: #e60505;
+  color:#fff;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.container form .submit-btn2{
+  width: 49.5%;
   padding:12px;
   font-size: 17px;
   background: #e60505;
@@ -89,5 +99,9 @@
 }
 
 .container form .submit-btn:hover{
+  background: #ff4848;
+}
+
+.container form .submit-btn2:hover{
   background: #ff4848;
 }
