@@ -1,0 +1,223 @@
+CREATE SCHEMA `restaurant` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+/* User table */
+CREATE TABLE `restaurant`.`user` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `firstName` VARCHAR(50) NULL DEFAULT NULL,
+  `lastName` VARCHAR(50) NULL DEFAULT NULL,
+  `mobile` VARCHAR(15) NULL,
+  `email` VARCHAR(50) NULL,
+  `passwordHash` VARCHAR(32) NOT NULL, /* avoids storing plain or encrypted passwords */
+  `admin` TINYINT(1) NOT NULL DEFAULT 0, /* determines if user is admin */
+  `registeredAt` DATETIME NOT NULL,
+  `lastLogin` DATETIME NULL DEFAULT NULL,
+  `intro` TINYTEXT NULL DEFAULT NULL,
+  `profile` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `uq_mobile` (`mobile` ASC),
+
+
+/* Ingredient table */
+CREATE TABLE `restaurant`.`ingredient` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `userId` BIGINT NOT NULL,
+  `vendorId` BIGINT DEFAULT NULL,
+  `title` VARCHAR(75) NOT NULL,
+  `slug` VARCHAR(100) NOT NULL, /* Used as GID of the ingredient */
+  `type` SMALLINT(6) NOT NULL DEFAULT 0,
+  `sku` VARCHAR(100) NOT NULL,
+  `quantity` FLOAT NOT NULL DEFAULT 0,
+  `unit` SMALLINT(6) NOT NULL DEFAULT 0,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NULL DEFAULT NULL,
+  `content` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `uq_slug` (`slug` ASC),
+  INDEX `idx_ingredient_user` (`userId` ASC),
+  CONSTRAINT `fk_ingredient_user`
+    FOREIGN KEY (`userId`)
+    REFERENCES `restaurant`.`user` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE NO ACTION);
+
+ALTER TABLE `restaurant`.`ingredient`
+ADD INDEX `idx_ingredient_vendor` (`vendorId` ASC);
+ALTER TABLE `restaurant`.`ingredient` 
+ADD CONSTRAINT `fk_ingredient_vendor`
+  FOREIGN KEY (`vendorId`)
+  REFERENCES `restaurant`.`user` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+/* Item table */
+CREATE TABLE `restaurant`.`item` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `userId` BIGINT NOT NULL,
+  `vendorId` BIGINT DEFAULT NULL,
+  `title` VARCHAR(75) NOT NULL,
+  `slug` VARCHAR(100) NOT NULL, /* GID of item */
+  `type` SMALLINT(6) NOT NULL DEFAULT 0,
+  `sku` VARCHAR(100) NOT NULL,
+  `price` FLOAT NOT NULL DEFAULT 0,
+  `quantity` FLOAT NOT NULL DEFAULT 0,
+  `unit` SMALLINT(6) NOT NULL DEFAULT 0,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NULL DEFAULT NULL,
+  `content` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `uq_slug` (`slug` ASC),
+  INDEX `idx_item_user` (`userId` ASC),
+  CONSTRAINT `fk_item_user`
+    FOREIGN KEY (`userId`)
+    REFERENCES `restaurant`.`user` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE NO ACTION);
+
+ALTER TABLE `restaurant`.`item`
+ADD INDEX `idx_item_vendor` (`vendorId` ASC);
+ALTER TABLE `restaurant`.`item` 
+ADD CONSTRAINT `fk_item_vendor`
+  FOREIGN KEY (`vendorId`)
+  REFERENCES `restaurant`.`user` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+/* Recipe table */
+/* tracks quantity of ingredients required for and item for a single serving */
+CREATE TABLE `restaurant`.`recipe` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `itemId` BIGINT NOT NULL,
+  `ingredientId` BIGINT NOT NULL,
+  `quantity` FLOAT NOT NULL DEFAULT 0,
+  `unit` SMALLINT(6) NOT NULL DEFAULT 0,
+  `instructions` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `idx_recipe_item` (`itemId` ASC),
+  UNIQUE INDEX `uq_recipe_item_ingredient` (`itemId` ASC, `ingredientId` ASC),
+  CONSTRAINT `fk_recipe_item`
+    FOREIGN KEY (`itemId`)
+    REFERENCES `restaurant`.`item` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+ALTER TABLE `restaurant`.`recipe`
+ADD INDEX `idx_recipe_ingredient` (`ingredientId` ASC);
+ALTER TABLE `restaurant`.`recipe` 
+ADD CONSTRAINT `fk_recipe_ingredient`
+  FOREIGN KEY (`ingredientId`)
+  REFERENCES `restaurant`.`ingredient` (`id`)
+  ON DELETE RESTRICT
+  ON UPDATE NO ACTION;
+
+
+/* order table */
+CREATE TABLE `restaurant`.`order` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `userId` BIGINT NULL DEFAULT NULL,
+  `vendorId` BIGINT NULL DEFAULT NULL,
+  `token` VARCHAR(100) NOT NULL,
+  `status` SMALLINT(6) NOT NULL DEFAULT 0,
+  `subTotal` FLOAT NOT NULL DEFAULT 0,
+  `itemDiscount` FLOAT NOT NULL DEFAULT 0,
+  `tax` FLOAT NOT NULL DEFAULT 0,
+  `total` FLOAT NOT NULL DEFAULT 0,
+  `promo` VARCHAR(50) NULL DEFAULT NULL, /* promo code of the order */
+  `discount` FLOAT NOT NULL DEFAULT 0, /* total value of discount */
+  `grandTotal` FLOAT NOT NULL DEFAULT 0,
+  `firstName` VARCHAR(50) NULL DEFAULT NULL,
+  `lastName` VARCHAR(50) NULL DEFAULT NULL,
+  `mobile` VARCHAR(15) NULL,
+  `email` VARCHAR(50) NULL,
+  `line1` VARCHAR(50) NULL DEFAULT NULL,
+  `line2` VARCHAR(50) NULL DEFAULT NULL,
+  `city` VARCHAR(50) NULL DEFAULT NULL,
+  `country` VARCHAR(50) NULL DEFAULT NULL,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NULL DEFAULT NULL,
+  `content` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `idx_order_user` (`userId` ASC),
+  CONSTRAINT `fk_order_user`
+    FOREIGN KEY (`userId`)
+    REFERENCES `restaurant`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE `restaurant`.`order` 
+ADD INDEX `idx_order_vendor` (`vendorId` ASC);
+ALTER TABLE `restaurant`.`order` 
+ADD CONSTRAINT `fk_order_vendor`
+  FOREIGN KEY (`vendorId`)
+  REFERENCES `restaurant`.`user` (`id`)
+  ON DELETE RESTRICT
+  ON UPDATE NO ACTION;
+
+
+/* order item table */
+CREATE TABLE `restaurant`.`order_item` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `orderId` BIGINT NOT NULL,
+  `itemId` BIGINT NOT NULL,
+  `sku` VARCHAR(100) NOT NULL,
+  `price` FLOAT NOT NULL DEFAULT 0,
+  `discount` FLOAT NOT NULL DEFAULT 0,
+  `quantity` FLOAT NOT NULL DEFAULT 0,
+  `unit` SMALLINT(6) NOT NULL DEFAULT 0,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NULL DEFAULT NULL,
+  `content` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `idx_order_item_order` (`orderId` ASC),
+  CONSTRAINT `fk_order_item_order`
+    FOREIGN KEY (`orderId`)
+    REFERENCES `restaurant`.`order` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE `restaurant`.`order_item` 
+ADD INDEX `idx_order_item_item` (`itemId` ASC);
+ALTER TABLE `restaurant`.`order_item` 
+ADD CONSTRAINT `fk_order_item_item`
+  FOREIGN KEY (`itemId`)
+  REFERENCES `restaurant`.`item` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+/* transaction table */
+CREATE TABLE `restaurant`.`transaction` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `userId` BIGINT NOT NULL,
+  `vendorId` BIGINT NOT NULL,
+  `orderId` BIGINT NOT NULL,
+  `code` VARCHAR(100) NOT NULL,
+  `type` SMALLINT(6) NOT NULL DEFAULT 0,
+  `mode` SMALLINT(6) NOT NULL DEFAULT 0,
+  `status` SMALLINT(6) NOT NULL DEFAULT 0,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NULL DEFAULT NULL,
+  `content` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `idx_transaction_user` (`userId` ASC),
+  CONSTRAINT `fk_transaction_user`
+    FOREIGN KEY (`userId`)
+    REFERENCES `restaurant`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE `restaurant`.`transaction` 
+ADD INDEX `idx_transaction_vendor` (`vendorId` ASC),
+ADD INDEX `idx_transaction_order` (`orderId` ASC);
+
+ALTER TABLE `restaurant`.`transaction` 
+ADD CONSTRAINT `fk_transaction_vendor`
+  FOREIGN KEY (`vendorId`)
+  REFERENCES `restaurant`.`user` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_transaction_order`
+  FOREIGN KEY (`orderId`)
+  REFERENCES `restaurant`.`order` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
